@@ -1,7 +1,5 @@
 <?php
 
-	include 'inc/autoload.php';
-
 	class EditorManager {
 
 		private $db;

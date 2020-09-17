@@ -1,7 +1,5 @@
 <?php
 
-	require 'inc/autoload.php';
-
 	class VersionManager {
 
 		private $db;
