@@ -31,7 +31,7 @@
 		public function deleteById($id) {
 
 			$vm = new VersionManager();
-			$vm->deleteBySupportId();
+			$vm->deleteBySupportId($id);
 
 			$sth = $this->db->prepare("DELETE FROM
 									   support
