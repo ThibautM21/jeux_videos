@@ -46,7 +46,6 @@
 			$sth = $this->db->prepare("SELECT * FROM editor WHERE id = :id");
 			$sth->bindValue(':id', $id, PDO::PARAM_INT);
 			$sth->execute();
-			$sth->closeCursor();
 			return new Editor($sth->fetch(PDO::FETCH_ASSOC));
 		}
 

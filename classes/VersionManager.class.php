@@ -64,7 +64,6 @@
 			$sth = $this->db->prepare("SELECT * FROM version WHERE id = :id");
 			$sth->bindValue(':id', $id);
 			$sth->execute();
-			$sth->closeCursor();
 			return new Version($sth->fetch(PDO::FETCH_ASSOC));
 		}
 

@@ -5,7 +5,7 @@
 		const USER = 'jeux_videos';
 		const PASSWORD = 'jeux_videos';
 		const SERVER = 'fabien-vincent.fr';
-		const ERRMODE = PDO::ERRMODE_EXCEPTION;
+		const ERRMODE = PDO::ERRMODE_EXCEPTION; /* PDO::ERRMODE_SILENT */
 		const DATABASE = 'jeux_videos';
 
 		private $db, $dataBase;

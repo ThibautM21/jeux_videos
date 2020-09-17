@@ -22,3 +22,12 @@ i {
 i:hover {
 	scale: 1.2!important;
 }
+
+.modal-footer {
+	border: none;
+}
+
+.modal-dialog.modal-notify .md-form.modal-body {
+	padding: 10px;
+	margin: 0;
+}
