@@ -1,3 +1,24 @@
 body {
 	padding-top: 75px !important;
 }
+
+td i, td a i {
+	font-size: 2em!important;
+	cursor: pointer;
+}
+
+.table td, th {
+    vertical-align: middle;
+}
+
+.nav-item a {
+	height: 70%!important;
+}
+
+i {
+	transition: 0.2s;
+}
+
+i:hover {
+	scale: 1.2!important;
+}
