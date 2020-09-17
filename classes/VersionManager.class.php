@@ -1,7 +1,5 @@
 <?php
 
-	require 'inc/autoload.php';
-
 	class VersionManager {
 
 		private $db;
@@ -66,7 +64,6 @@
 			$sth = $this->db->prepare("SELECT * FROM version WHERE id = :id");
 			$sth->bindValue(':id', $id);
 			$sth->execute();
-			$sth->closeCursor();
 			return new Version($sth->fetch(PDO::FETCH_ASSOC));
 		}
 

@@ -1,7 +1,5 @@
 <?php
 
-	require 'inc/autoload.php';
-
 	class CategoryManager {
 
 		private $db;
@@ -28,7 +26,7 @@
 			return $sth->rowCount();
 		}
 
-		public function deleteByID($id) {
+		public function deleteById($id) {
 
 			/* Delete game first */
 			$gm = new GameManager();
@@ -47,7 +45,6 @@
 			$sth = $this->db->prepare("SELECT * FROM category WHERE id = :id");
 			$sth->bindValue(':id', $id, PDO::PARAM_INT);
 			$sth->execute();
-			$sth->closeCursor();
 			return new Category($sth->fetch(PDO::FETCH_ASSOC));
 		}
 

@@ -1,7 +1,5 @@
 <?php
 
-	require 'inc/autoload.php';
-
 	class SupportManager {
 
 		private $db;
@@ -46,7 +44,6 @@
 			$sth = $this->db->prepare("SELECT * FROM support WHERE id = :id");
 			$sth->bindValue(':id', $id, PDO::PARAM_INT);
 			$sth->execute();
-			$sth->closeCursor();
 			return new Support($sth->fetch(PDO::FETCH_ASSOC));
 		}
 
