@@ -66,6 +66,11 @@
 		}
 
 		public function deleteById($id) {
+
+			/* Delete associated versions first */
+			$vm = new VersionManager();
+			$vm->deleteByGameId();
+
 			$sth = $this->db->prepare("DELETE FROM
 									   game
 								 	   WHERE id = :id");
@@ -76,22 +81,33 @@
 		}
 
 		public function deleteByCategoryId($id) {
-			$sth = $this->db->prepare("DELETE FROM
+
+			$sth = $this->db->prepare("SELECT * FROM
 									   game
 								 	   WHERE category_id = :category_id");
 			$sth->bindValue(':category_id', $id, PDO::PARAM_INT);
 			$sth->execute();
 			$sth->closeCursor();
+
+			while($game = $sth->fetch(PDO::FETCH_ASSOC)) {
+				$this->deleteById($game['id']);
+			}
+
 			return $sth->rowCount();
 		}
 
 		public function deleteByEditorId($id) {
-			$sth = $this->db->prepare("DELETE FROM
+			$sth = $this->db->prepare("SELECT * FROM
 									   game
 								 	   WHERE editor_id = :editor_id");
 			$sth->bindValue(':editor_id', $id, PDO::PARAM_INT);
 			$sth->execute();
 			$sth->closeCursor();
+
+			while($game = $sth->fetch(PDO::FETCH_ASSOC)) {
+				$this->deleteById($game['id']);
+			}
+
 			return $sth->rowCount();
 		}
 

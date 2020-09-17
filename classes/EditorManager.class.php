@@ -31,8 +31,9 @@
 
 		public function deleteByID($id) {
 
+			/* Delete game first */
 			$gm = new GameManager();
-			$gm->deleteGamesByEditorId($id);
+			$gm->deleteByEditorId($id);
 
 			$sth = $this->db->prepare("DELETE FROM
 									   editor

@@ -42,6 +42,26 @@
 			return $sth->rowCount();
 		}
 
+		public function deleteBySupportId($id) {
+			$sth = $this->db->prepare("DELETE FROM
+									   support
+								 	   WHERE support_id = :support_id");
+			$sth->bindValue(':support_id', $id, PDO::PARAM_INT);
+			$sth->execute();
+			$sth->closeCursor();
+			return $sth->rowCount();
+		}
+
+		public function deleteByGameId($id) {
+			$sth = $this->db->prepare("DELETE FROM
+									   support
+								 	   WHERE game_id = :game_id");
+			$sth->bindValue(':game_id', $id, PDO::PARAM_INT);
+			$sth->execute();
+			$sth->closeCursor();
+			return $sth->rowCount();
+		}
+
 		public function getVersionById($id) {
 			$sth = $this->db->prepare("SELECT * FROM version WHERE id = :id");
 			$sth->bindValue(':id', $id);

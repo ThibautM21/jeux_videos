@@ -1,5 +1,7 @@
 <?php
 
+	require 'inc/autoload.php';
+
 	class CategoryManager {
 
 		private $db;
@@ -27,6 +29,11 @@
 		}
 
 		public function deleteByID($id) {
+
+			/* Delete game first */
+			$gm = new GameManager();
+			$gm->deleteByCategoryId($id);
+
 			$sth = $this->db->prepare("DELETE FROM
 									   category
 								 	   WHERE id = :id");

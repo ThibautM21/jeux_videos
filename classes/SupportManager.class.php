@@ -1,5 +1,7 @@
 <?php
 
+	require 'inc/autoload.php';
+
 	class SupportManager {
 
 		private $db;
@@ -27,6 +29,10 @@
 		}
 
 		public function deleteById($id) {
+
+			$vm = new VersionManager();
+			$vm->deleteBySupportId();
+
 			$sth = $this->db->prepare("DELETE FROM
 									   support
 								 	   WHERE id = :id");
