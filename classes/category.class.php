@@ -21,10 +21,22 @@ class Category {
 
 	// Setter
 	private function setId($id) {
-		$this->id = $id;
+		if (is_int($id) && strlen($id)<=999){
+			$this->id = $id;
+		}
+		else{
+			echo "Je sais pas.";
+		}		
 	}
 
 	public function setType($type) {
+		if (is_string($type) && strlen($type)<=50){
 		$this->type = $type;
+		}
+		else{
+			echo "La catégorie n'est pas bonne.";
+		}
+
+		
 	}
 }

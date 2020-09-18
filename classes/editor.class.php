@@ -23,14 +23,32 @@ class Editor {
 
 	// Setter
 	private function setId($id) {
-		$this->id = $id;
+		if (is_int($id) && strlen($id)<=999){
+			$this->id = $id;
+		}
+		else{
+			echo "Je sais pas.";
+		}		
 	}
 
 	public function setName($name) {
+		if (is_string($name) && strlen($name)<=100){
 		$this->name = $name;
+		}
+		else{
+			echo "L'éditeur n'est pas bon.";
+		}
+		
 	}
 
 	public function setLink($link) {
+		if (is_string($link) && strlen($link)<=255){
 		$this->link = $link;
+		}
+		else{
+			echo "Le lien ne fonctionne pas.";
+		}
+		
+		
 	}
 }
