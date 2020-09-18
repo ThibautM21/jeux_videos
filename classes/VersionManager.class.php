@@ -42,7 +42,7 @@
 
 		public function deleteBySupportId($id) {
 			$sth = $this->db->prepare("DELETE FROM
-									   support
+									   version
 								 	   WHERE support_id = :support_id");
 			$sth->bindValue(':support_id', $id, PDO::PARAM_INT);
 			$sth->execute();
@@ -52,7 +52,7 @@
 
 		public function deleteByGameId($id) {
 			$sth = $this->db->prepare("DELETE FROM
-									   support
+									   version
 								 	   WHERE game_id = :game_id");
 			$sth->bindValue(':game_id', $id, PDO::PARAM_INT);
 			$sth->execute();

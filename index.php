@@ -3,4 +3,4 @@
 	require 'header.php';
 
 	require 'inc/libraries.php';
-	require 'footer.php';
+	require 'inc/footer.php';

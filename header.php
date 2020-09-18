@@ -18,7 +18,7 @@
 	<title>JeuxVideos.com</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand navbar-dark bg-dark fixed-left">
+	<nav id="nav" class="navbar navbar-expand navbar-dark bg-dark fixed-left">
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">

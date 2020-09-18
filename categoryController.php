@@ -21,6 +21,7 @@
 			} else {
 				$_SESSION['error'] = 'Category type is mandatory !';
 			}
+		/* Delete action */
 		} else if ($_POST['action'] == 'delete') {
 			if (isset($_POST['delete_id']) && !empty($_POST['delete_id'])) {
 				$type = $cm->getCategoryById($_POST['delete_id'])->getType();
@@ -30,6 +31,7 @@
 					$_SESSION['error'] = 'Unable to delete category "'.$type.'"!';
 				}
 			}
+		/* Edit action */
 		} else if ($_POST['action'] == 'edit') {
 			if (isset($_POST['edit_id']) && !empty($_POST['edit_id'])
 			 && isset($_POST['edit_type']) && !empty($_POST['edit_type'])) {
