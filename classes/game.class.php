@@ -9,7 +9,7 @@ class Game {
 	private $link;
 	private $pegi;
 	private $category_id;
-	private $editor_id
+	private $editor_id;
 
 	// Constucteur
 	public function __construct(array $donnees) {

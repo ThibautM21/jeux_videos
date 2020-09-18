@@ -59,7 +59,7 @@
 			$sth->bindValue(':pegi', $game->getPegi(), PDO::PARAM_INT);
 			$sth->bindValue(':category_id', $game->getCategory_id(), PDO::PARAM_INT);
 			$sth->bindValue(':editor_id', $game->getEditor_id(), PDO::PARAM_INT);
-			$sth->bindValue(':id', $Game->getId(), PDO::PARAM_INT);
+			$sth->bindValue(':id', $game->getId(), PDO::PARAM_INT);
 			$sth->execute();
 			$sth->closeCursor();
 			return $sth->rowCount();
@@ -69,7 +69,7 @@
 
 			/* Delete associated versions first */
 			$vm = new VersionManager();
-			$vm->deleteByGameId();
+			$vm->deleteByGameId($id);
 
 			$sth = $this->db->prepare("DELETE FROM
 									   game
@@ -133,7 +133,7 @@
 		}
 
 		public function getGames() {
-			$sth = $this->db->query("SELECT * FROM game");
+			$sth = $this->db->query("SELECT game.id, title, description, game.link, pegi, category.type, editor.name, image FROM game JOIN category ON game.category_id = category.id JOIN editor ON game.editor_id = editor.id");
 			return $sth->fetchAll(PDO::FETCH_ASSOC);
 		}
 	}
