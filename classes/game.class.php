@@ -37,7 +37,13 @@ class Game {
 	}
 
 	public function setTitle($title) {
-		$this->title = $title;
+		if (is_string($title) && strlen($title)<=100){
+			$this->title = $title;
+		}
+		else{
+			echo "Manque d'immagination -_-.";
+		}
+		
 	}
 
 	public function setDescription($description) {
@@ -45,11 +51,21 @@ class Game {
 	}
 
 	public function setImage($image) {
+		if (is_string($image) && strlen($image)<=255){
 		$this->image = $image;
+	}
+	else{
+		echo "Ah t'as merdé.";
+		}
 	}
 
 	public function setLink($link) {
-		$this->link = $link;
+		if (is_string($link) && strlen($link)<=255){
+			$this->link = $link;
+		}
+		else{
+			echo "Le lien ne fonctionne pas.";
+			}
 	}
 
 	public function setPegi($pegi) {

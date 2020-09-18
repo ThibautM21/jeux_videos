@@ -31,18 +31,40 @@ class User {
 	}
 
 	public function setPseudo($pseudo) {
+		if (is_string($pseudo) && strlen($pseudo)>=5 && strlen($pseudo)<=8){
 		$this->pseudo = $pseudo;
+		}
+		else{
+			echo "Le pseudo autorisé entre 5 et 8 caractères.";
+		}
 	}
 
 	public function setEmail($email) {
-		$this->email = $email;
+		if (is_string($email) && strlen($email)<=255){
+			$this->email = $email;
+		}		
+	else{
+		echo "Ah t'as merdé.";
+		}
+		
 	}
 
 	public function setPassword($password) {
-		$this->password = $password;
+		if (is_string($password) && strlen($password)>=8 && strlen($password)<=255){
+			$this->password = $password;
+		}
+		else{
+			echo "Eh ouai, mais non.";
+		}		
 	}
 
 	public function setAdmin($admin) {
-		$this->admin = $admin;
+		if (is_int($admin) && strlen($admin)<=999){
+			$this->admin = $admin;
+		}
+		else{
+			echo "Je sais pas.";
+		}
+		
 	}
 }
