@@ -27,7 +27,7 @@
 			return $sth->rowCount();
 		}
 
-		public function deleteByID($id) {
+		public function deleteById($id) {
 
 			/* Delete game first */
 			$gm = new GameManager();
