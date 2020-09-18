@@ -1,5 +1,7 @@
 $(function () {
 	$('.alert-success').delay(2000).fadeOut();
+	$(".nav-item").find(".active").removeClass("active");
+	$(".nav-item").eq(2).addClass("active");
 
 	// Filling the edit form (should be AJAX..)
 	$('.edit').click(function () {
