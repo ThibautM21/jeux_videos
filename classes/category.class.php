@@ -25,6 +25,13 @@ class Category {
 	}
 
 	public function setType($type) {
+		if (is_string($type) && strlen($type)<=50){
 		$this->type = $type;
+		}
+		else{
+			echo "La catégorie n'est pas bonne.";
+		}
+
+		
 	}
 }

@@ -25,6 +25,10 @@ class Support {
 	}
 
 	public function setName($name) {
-		$this->name = $name;
-	}
+		if (is_string($name) && strlen($name)<=100){
+			$this->name = $name;		
+		}
+		else{
+			echo "Support inconnue.";
+		}
 }
