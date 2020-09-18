@@ -23,7 +23,12 @@ class Editor {
 
 	// Setter
 	private function setId($id) {
-		$this->id = $id;
+		if (is_int($id) && strlen($id)<=999){
+			$this->id = $id;
+		}
+		else{
+			echo "Je sais pas.";
+		}		
 	}
 
 	public function setName($name) {
