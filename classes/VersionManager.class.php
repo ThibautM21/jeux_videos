@@ -11,9 +11,9 @@
 
 		public function add(Version $version) {
 			$sth = $this->db->prepare("INSERT INTO version(game_id, support_id, release_date) VALUES(:game_id, :support_id, :release_date)");
-			$sth->bindValue(':game_id', $version->game_id());
-			$sth->bindValue(':support_id', $version->support_id());
-			$sth->bindValue(':release_date', $version->release_date());
+			$sth->bindValue(':game_id', $version->getGame_id());
+			$sth->bindValue(':support_id', $version->getSupport_id());
+			$sth->bindValue(':release_date', $version->getRelease_date());
 			$sth->execute();
 			$sth->closeCursor();
 			return $sth->rowCount();
@@ -21,16 +21,16 @@
 
 		public function update(Version $version) {
 			$sth = $this->db->prepare("UPDATE version SET game_id = :game_id, support_id = :support_id, release_date = :release_date WHERE id = :id");
-			$sth->bindValue(':game_id', $version->game_id());
-			$sth->bindValue(':support_id', $version->support_id());
-			$sth->bindValue(':release_date', $version->release_date());
-			$sth->bindValue(':id', $version->id());
+			$sth->bindValue(':game_id', $version->getGame_id());
+			$sth->bindValue(':support_id', $version->getSupport_id());
+			$sth->bindValue(':release_date', $version->getRelease_date());
+			$sth->bindValue(':id', $version->getId());
 			$sth->execute();
 			$sth->closeCursor();
 			return $sth->rowCount();
 		}
 
-		public function deleteByID($id) {
+		public function deleteById($id) {
 			$sth = $this->db->prepare("DELETE FROM
 									   version
 								 	   WHERE id = :id");
@@ -68,7 +68,7 @@
 		}
 
 		public function getVersions() {
-			$sth = $this->db->query("SELECT * FROM version");
+			$sth = $this->db->query("SELECT version.id, title, name, release_date FROM version JOIN game ON game_id = game.id JOIN support ON support_id = support.id");
 			return $sth->fetchAll(PDO::FETCH_ASSOC);
 		}
 	}

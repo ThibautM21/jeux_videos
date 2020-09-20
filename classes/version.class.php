@@ -21,7 +21,7 @@ class Version {
 	public function getId() {return $this->id;}
 	public function getGame_id() {return $this->game_id;}
 	public function getSupport_id() {return $this->support_id;}
-	public function getRelease_id() {return $this->release_date;}
+	public function getRelease_date() {return $this->release_date;}
 
 	// Setter
 	private function setId($id) {
