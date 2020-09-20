@@ -95,7 +95,6 @@
 
 			$image = $_FILES['image'];
 
-			/* If guitar is successfully added, upload the image */
 			if (isset($image) && !empty($image) && !empty($image['name'])) {
 				if (empty($image['tmp_name']) || explode('/', $image['type'])[0] != 'image')
 					throw new Exception('Please specify an image (.jpg, .png, .gif)!');
@@ -116,6 +115,10 @@
 			$game->setPegi($_POST['pegi']);
 			$game->setCategory_id($_POST['category']);
 			$game->setEditor_id($_POST['editor']);
+
+			if ($game->getImage())
+				unlink($game->getImage());
+
 			if (isset($filename))
 				$game->setImage($filename);
 
