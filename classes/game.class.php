@@ -33,22 +33,19 @@ class Game {
 
 	// Setter
 	private function setId($id) {
-		if (is_int($id) && strlen($id)<=999){
+		if (filter_var($id, FILTER_VALIDATE_INT) && $id > 0) {
 			$this->id = $id;
-		}
-		else{
+		} else {
 			echo "Je sais pas.";
-		}		
+		}
 	}
 
 	public function setTitle($title) {
-		if (is_string($title) && strlen($title)<=100){
+		if (is_string($title) && strlen($title) <= 100) {
 			$this->title = $title;
-		}
-		else{
+		} else {
 			echo "Manque d'immagination -_-.";
 		}
-		
 	}
 
 	public function setDescription($description) {
@@ -56,51 +53,42 @@ class Game {
 	}
 
 	public function setImage($image) {
-		if (is_string($image) && strlen($image)<=255){
-		$this->image = $image;
-	}
-	else{
+		if (is_string($image) && strlen($image) <= 255) {
+			$this->image = $image;
+		} else {
 		echo "Ah t'as merdé.";
 		}
 	}
 
 	public function setLink($link) {
-		if (is_string($link) && strlen($link)<=255){
+		if (is_string($link) && strlen($link) <= 255) {
 			$this->link = $link;
-		}
-		else{
+		} else{
 			echo "Le lien ne fonctionne pas.";
-			}
+		}
 	}
 
 	public function setPegi($pegi) {
-		if (is_int($pegi) && $pegi>0){
+		if (filter_var($pegi, FILTER_VALIDATE_INT) && $pegi > 0) {
 			$this->pegi = $pegi;
-		}
-		else{
+		} else {
 			echo "Oskuuuur.";
-		}		
+		}
 	}
 
 	public function setCategory_id($category_id) {
-		if (is_int($category_id) && $category_id >0){
+		if (filter_var($category_id, FILTER_VALIDATE_INT) && $category_id > 0) {
 			$this->category_id = $category_id;
-		}
-		else{
+		} else {
 			echo "Nope.";
 		}
-
-		
 	}
 
 	public function setEditor_id($editor_id) {
-		if (is_int($editor_id) && $editor_id >0){
+		if (filter_var($editor_id, FILTER_VALIDATE_INT) && $editor_id > 0) {
 			$this->editor_id = $editor_id;
-		}
-		else{
+		} else {
 			echo "Nope.";
 		}
-
-		
 	}
 }

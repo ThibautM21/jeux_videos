@@ -21,19 +21,18 @@ class Support {
 
 	// Setter
 	private function setId($id) {
-		if (is_int($id) && strlen($id)<=999){
+		if (filter_var($id, FILTER_VALIDATE_INT) && $id > 0) {
 			$this->id = $id;
-		}
-		else{
+		} else {
 			echo "Je sais pas.";
-		}		
+		}
 	}
 
 	public function setName($name) {
-		if (is_string($name) && strlen($name)<=100){
-			$this->name = $name;		
-		}
-		else{
+		if (is_string($name) && strlen($name) <=100) {
+			$this->name = $name;
+		} else {
 			echo "Support inconnue.";
 		}
+	}
 }

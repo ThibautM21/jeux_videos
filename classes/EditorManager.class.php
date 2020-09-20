@@ -19,9 +19,10 @@
 		}
 
 		public function update(Editor $editor) {
-			$sth = $this->db->prepare("UPDATE editor SET type = :type WHERE id = :id");
-			$sth->bindValue(':type', $Editor->getType());
-			$sth->bindValue(':id', $Editor->getId(), PDO::PARAM_INT);
+			$sth = $this->db->prepare("UPDATE editor SET name = :name, link = :link WHERE id = :id");
+			$sth->bindValue(':name', $editor->getName());
+			$sth->bindValue(':link', $editor->getLink());
+			$sth->bindValue(':id', $editor->getId(), PDO::PARAM_INT);
 			$sth->execute();
 			$sth->closeCursor();
 			return $sth->rowCount();

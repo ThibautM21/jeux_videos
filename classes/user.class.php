@@ -32,7 +32,7 @@ class User {
 		}
 		else{
 			echo "Je sais pas.";
-		}		
+		}
 	}
 
 	public function setPseudo($pseudo) {
@@ -47,11 +47,11 @@ class User {
 	public function setEmail($email) {
 		if (is_string($email) && strlen($email)<=255){
 			$this->email = $email;
-		}		
+		}
 	else{
 		echo "Ah t'as merdé.";
 		}
-		
+
 	}
 
 	public function setPassword($password) {
@@ -60,7 +60,7 @@ class User {
 		}
 		else{
 			echo "Eh ouai, mais non.";
-		}		
+		}
 	}
 
 	public function setAdmin($admin) {
@@ -70,6 +70,6 @@ class User {
 		else{
 			echo "Je sais pas.";
 		}
-		
+
 	}
 }

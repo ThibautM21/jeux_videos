@@ -25,41 +25,32 @@ class Version {
 
 	// Setter
 	private function setId($id) {
-		if (is_int($id) && strlen($id)<=999){
+		if (filter_var($id, FILTER_VALIDATE_INT) && $id > 0){
 			$this->id = $id;
-		}
-		else{
+		} else {
 			echo "Je sais pas.";
-		}		
+		}
 	}
 
 	public function setGame_id($game_id) {
-		f (is_int($game_id) && $game_id >0){
+		if (filter_var($game_id, FILTER_VALIDATE_INT) && $game_id > 0){
 			$this->game_id = $game_id;
+		} else {
+			echo "Invalid game ID.";
 		}
-		else{
-			echo "Nope.";
-		}
-		
 	}
 
 	public function setSupport_id($support_id) {
-		f (is_int($support_id) && $support_id >0){
+		if (filter_var($support_id, FILTER_VALIDATE_INT) && $support_id > 0){
 			$this->support_id = $support_id;
-		}
-		else{
+		} else {
 			echo "Nope.";
 		}
-		
 	}
 
-	public function setRelease_id($release_date) {
-		f (is_int($release_date) && $release_date >0){
-			$this->release_date = $release_date;
-		}
-		else{
-			echo "Nope.";
-		}
-		
+	public function setRelease_date($release_date) {
+		$d = DateTime::createFromFormat('Y-m-d', $release_date);
+		if ($d && $d->format('Y-m-d') === $release_date);
+		$this->release_date = $release_date;
 	}
 }
