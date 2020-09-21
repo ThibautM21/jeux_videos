@@ -3,52 +3,29 @@
 
 	require 'header.php';
 	require 'inc/autoload.php';
-	$gm = new GameManager();
-	$games = $gm->getGames();
 
-	$cm = new CategoryManager();
-	$categories = $cm->getCategories();
-
-	$em = new EditorManager();
-	$editors = $em->getEditors();
+	$vm = new VersionManager();
+	$versions = $vm->getFullVersions();
 ?>
 
 <div class="container mt-5">
 
-	<h1 class="row mx-1">Games</h1>
+	<?php foreach ($versions as $idx => $version): ?>
+		<div class="row my-5">
+			<div class="col-3">
+				<p><img class="img-fluid" src="<?= $version['image'] ?>"></p>
+			</div>
+			<div class="col-8 align-self-center">
+				<h2 class="col-12"><?= $version['title'] ?></h2>
+				<h3 class="col-12"><span class="text-danger"><?= $version['support'] ?></span><span class="mx-2 text-success"><?= $version['editor'] ?></span></h3>
+				<p class="col-12 text-muted"><?= $version['description']?></p>
+				<p class="col-12 font-weight-bold">Sortie : <?= $version['release_date'] ?></p>
+				<button class="btn btn-info">Plus d'infos</button>
+			</div>
+		</div>
+		<hr>
+	<?php endforeach; ?>
 
-	<table class="table table-hover text-center z-depth-4">
-		<thead class="thead-dark">
-			<tr>
-				<th scope="col">Number</th>
-				<th scope="col">Image</th>
-				<th scope="col">Title</th>
-				<th scope="col">Description</th>
-				<th scope="col">Link</th>
-				<th scope="col">PEGI</th>
-				<th scope="col">Category</th>
-				<th scope="col">Editor</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($games as $idx => $game): ?>
-				<tr>
-					<td><?= $idx+1 ?></td>
-					<?php if (isset($game['image']) && !empty($game['image'])): ?>
-						<td><img width=100 height=100 class="img-fluid" src="<?= $game['image'] ?>"></td>
-					<?php else: ?>
-						<td class='text-muted font-italic'>No image</td>
-					<?php endif; ?>
-					<td><?= $game['title'] ?></td>
-					<td><?= $game['description'] ?></td>
-					<td><?= $game['link'] ?></td>
-					<td><?= $game['pegi'] ?></td>
-					<td><?= $game['type'] ?></td>
-					<td><?= $game['name'] ?></td>
-				</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
 </div>
 
 <?php include 'inc/libraries.php' ?>

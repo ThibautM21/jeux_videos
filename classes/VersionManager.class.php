@@ -71,4 +71,25 @@
 			$sth = $this->db->query("SELECT version.id, title, name, release_date FROM version JOIN game ON game_id = game.id JOIN support ON support_id = support.id");
 			return $sth->fetchAll(PDO::FETCH_ASSOC);
 		}
+
+		public function getFullVersions() {
+			$sth = $this->db->query("SELECT
+								    version.id,
+								    title,
+								    description,
+								    editor.name as editor,
+								    image,
+								    game.link,
+								    pegi,
+								    support.name as support,
+								    release_date,
+								    category.type
+								FROM
+								    version
+								JOIN game ON game_id = game.id
+								JOIN support ON support_id = support.id
+								JOIN editor ON game.editor_id = editor.id
+								JOIN category ON category.id = game.category_id");
+			return $sth->fetchAll(PDO::FETCH_ASSOC);
+		}
 	}

@@ -43,7 +43,7 @@
 					<?php endif; ?>
 					<td><?= $game['title'] ?></td>
 					<td><?= $game['description'] ?></td>
-					<td><?= $game['link'] ?></td>
+					<td><a class="text-success" href="<?= $game['link'] ?>">Lien</a></td>
 					<td><?= $game['pegi'] ?></td>
 					<td><?= $game['type'] ?></td>
 					<td><?= $game['name'] ?></td>
