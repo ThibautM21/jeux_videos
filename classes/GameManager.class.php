@@ -102,7 +102,6 @@
 								 	   WHERE editor_id = :editor_id");
 			$sth->bindValue(':editor_id', $id, PDO::PARAM_INT);
 			$sth->execute();
-			$sth->closeCursor();
 
 			while($game = $sth->fetch(PDO::FETCH_ASSOC)) {
 				$this->deleteById($game['id']);

@@ -9,7 +9,6 @@
 ?>
 
 <div class="container mt-5">
-
 	<?php foreach ($versions as $idx => $version): ?>
 		<div class="row my-5">
 			<div class="col-3">
@@ -25,7 +24,6 @@
 		</div>
 		<hr>
 	<?php endforeach; ?>
-
 </div>
 
 <?php include 'inc/libraries.php' ?>
